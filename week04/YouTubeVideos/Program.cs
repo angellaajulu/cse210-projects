@@ -7,38 +7,60 @@ class Program
     {
         Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
 
-        Video v1 = new Video("Intro to C#", "Alice", 300);
-        Video v2 = new Video("Learning Abstraction", "Bob", 450);
-        Video v3 = new Video("OOP Basics", "Carol", 600);
+        List<Video> videos = new List<Video>();
 
-        v1.AddComment(new Comment("John", "Great video!"));
-        v1.AddComment(new Comment("Mary", "Very helpful."));
-        v1.AddComment(new Comment("Steve", "Thanks for sharing."));
+        // Video 1
+        Video video1 = new Video();
+        video1.Title = "How to Bake Bread";
+        video1.Author = "Kitchen Academy";
+        video1.Length = 540;
 
-        v2.AddComment(new Comment("Anna", "Awesome explanation!"));
-        v2.AddComment(new Comment("Tom", "Clear and concise."));
-        v2.AddComment(new Comment("Lucy", "Loved it."));
+        video1.AddComment(new Comment("Alice", "This was so easy to follow!"));
+        video1.AddComment(new Comment("Brian", "My bread turned out perfect."));
+        video1.AddComment(new Comment("Clara", "Thanks for the great tips!"));
 
-        v3.AddComment(new Comment("Mike", "Good intro."));
-        v3.AddComment(new Comment("Sara", "Nice examples."));
-        v3.AddComment(new Comment("Jake", "Well explained."));
+        videos.Add(video1);
 
-        List<Video> videos = new List<Video> {v1, v2, v3};
+        // Video
+        Video video2 = new Video();
+        video2.Title = "C# Classes Explained";
+        video2.Author = "Tech Teacher";
+        video2.Length = 720;
 
-        foreach (var video in videos)
+        video2.AddComment(new Comment("David", "Best explanation I've seen."));
+        video2.AddComment(new Comment("Henry", "I feel so relaxed now."));
+        video2.AddComment(new Comment("Mary", "Very clear and helpful."));
+
+        videos.Add(video2);
+
+        // Video 3
+        Video video3 = new Video();
+        video3.Title = "10 Minute Yoga Routine";
+        video3.Author = "Wellness Studio";
+        video3.Length = 600;
+
+        video3.AddComment(new Comment("Grace", "Perfect morning routine!"));
+        video3.AddComment(new Comment("Henry", "Great examples!"));
+        video3.AddComment(new Comment("Ivy", "Loved this session!"));
+
+        videos.Add(video3);
+
+        // -------- Display all video information --------
+        foreach (Video vid in videos)
         {
-            Console.WriteLine($"Title: {video.Title}");
-            Console.WriteLine($"Author: {video.Author}");
-            Console.WriteLine($"Length: {video.LengthInSeconds} seconds");
-            Console.WriteLine($"Number of comments: {video.GetNumberOfComments()}");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"Title: {vid.Title}");
+            Console.WriteLine($"Author: {vid.Author}");
+            Console.WriteLine($"Length: {vid.Length} seconds");
+            Console.WriteLine($"Number of Comments: {vid.GetCommentCount()}");
             Console.WriteLine("Comments:");
 
-            foreach (var c in video.GetComments())
+            foreach (Comment c in vid.GetComments())
             {
-                Console.WriteLine($"- {c.CommenterName}: {c.Text}");
+                Console.WriteLine($" - {c.Name}: {c.Text}");
             }
 
-            Console.WriteLine(new string('-', 40));
+            Console.WriteLine();
         }
     }
 }

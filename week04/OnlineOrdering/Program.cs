@@ -1,34 +1,40 @@
 using System;
-using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the OnlineOrdering Project.");
+        // -------- Order 1 (USA Customer) --------
+        Address address1 = new Address("123 Main St", "Phoenix", "AZ", "USA");
+        Customer customer1 = new Customer("Alice Johnson", address1);
+        Order order1 = new Order(customer1);
 
-        Address a1 = new Address("123 Main St", "New York", "NY", "USA");
-        Customer c1 = new Customer("Alice Smith", a1);
+        order1.AddProduct(new Product("Laptop", "P100", 899.99, 1));
+        order1.AddProduct(new Product("Mouse", "P101", 19.99, 2));
 
-        Address a2 = new Address("456 Maple Rd", "Toronto", "ON", "Canada");
-        Customer c2 = new Customer("Bob Johnson", a2);
+        // -------- Order 2 (Non-USA Customer) --------
+        Address address2 = new Address("45 Market Road", "Toronto", "ON", "Canada");
+        Customer customer2 = new Customer("Robert King", address2);
+        Order order2 = new Order(customer2);
 
-        Order o1 = new Order(c1);
-        o1.AddProduct(new Product("Laptop", "P001", 1000, 1));
-        o1.AddProduct(new Product("Mouse", "P002",25, 2));
+        order2.AddProduct(new Product("Desk Lamp", "P200", 29.99, 1));
+        order2.AddProduct(new Product("Notebook Set", "P201", 12.50, 3));
+        order2.AddProduct(new Product("Backpack", "P202", 45.00, 1));
 
-        Order o2 = new Order(c2);
-        o2.AddProduct(new Product("Keyboard", "P003", 50, 1));
-        o2.AddProduct(new Product("Monitor", "P004", 200, 2));
+        // -------- Display Output --------
+        DisplayOrder(order1);
+        Console.WriteLine("---------------------------------------");
+        DisplayOrder(order2);
+    }
 
-        List<Order>orders = new List<Order> {o1, o2};
+    static void DisplayOrder(Order order)
+    {
+        Console.WriteLine("PACKING LABEL:");
+        Console.WriteLine(order.GetPackingLabel());
 
-        foreach (var order in orders)
-        {
-            Console.WriteLine(order.GetPackingLabel());
-            Console.WriteLine(order.GetShippingLabel());
-            Console.WriteLine($"Total Price: ${order.CalculateTotalPrice()}");
-            Console.WriteLine(new string('-', 40));
-        }
+        Console.WriteLine("SHIPPING LABEL:");
+        Console.WriteLine(order.GetShippingLabel());
+
+        Console.WriteLine($"Total Price: ${order.GetTotalCost()}\n");
     }
 }

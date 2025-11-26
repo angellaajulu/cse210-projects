@@ -1,34 +1,44 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+
 
 public class Video
 {
-    public string Title {get; set;}
-    public string Author {get; set;}
-    public int LengthInSeconds {get; set;}
+    private string _title;
+    private string _author;
+    private int _length;
+    private List<Comment> _comments = new List<Comment>();
 
-    private List<Comment> comments = new List<Comment>();
-
-    public Video(string title, string author, int lengthInSeconds)
+    public string Title
     {
-        Title = title;
-        Author = author;
-        LengthInSeconds= lengthInSeconds;
+        get {return _title;}
+        set {_title = value;}
+    }
+
+    public string Author
+    {
+        get {return _author;}
+        set {_author = value;}
+    }
+
+    public int Length
+    {
+        get {return _length;}
+        set {_length = value;}
     }
 
     public void AddComment(Comment comment)
     {
-        comments.Add(comment);
+        _comments.Add(comment);
     }
 
-    public int GetNumberOfComments()
+    public int GetCommentCount()
     {
-        return comments.Count;
+        return _comments.Count;
     }
 
     public List<Comment> GetComments()
     {
-        return comments;
+        return _comments;
     }
 }
