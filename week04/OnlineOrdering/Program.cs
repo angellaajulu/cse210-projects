@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("This is the OnlineOrdering Program!");
+    
         // -------- Order 1 (USA Customer) --------
         Address address1 = new Address("123 Main St", "Phoenix", "AZ", "USA");
         Customer customer1 = new Customer("Alice Johnson", address1);
