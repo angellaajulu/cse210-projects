@@ -1,0 +1,3 @@
+Breathing:10
+Reflection:1
+Listing:3
