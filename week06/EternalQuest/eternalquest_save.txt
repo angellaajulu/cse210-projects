@@ -1,0 +1,8 @@
+1260:2
+Badges:Achiever I,Level 2 Achiever,Checklist Champion,Points 1000+
+EternalEventCount:2
+Simple|give a talk|speak in sacrament meeting on sunday|50|True
+Eternal|study scriptures for 20 minutes everday|study atleast twice daily|20
+Checklist|temple visit|visit 12 times|10|10|10|1000
+Simple|Relax|ret from work over the weekend|70|True
+Eternal|prayer|praying daily atleast twice|10
